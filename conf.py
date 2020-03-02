@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u'EasyPayAPIDoc'
+project = u'支付方案API接入文档'
 copyright = u'2020, Eric Hu'
 author = u'Eric Hu'
 
