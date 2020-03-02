@@ -15,10 +15,11 @@
 # 付款
 ---
 ## 创建交易
+
 > 系统把创建交易的能力以API的形式开放给商家，使您能用更灵活的方式集成开发支付功能。此API用于创建商家自己的自定义结帐页面，因此买家不必离开商家的网站即可完成付款。
 
 接口说明 |
--|-
+- | -
 请求路径 | http://{host}/api/v1/submit_trans
 请求方式 | POST
 Content-Type | application/json
@@ -26,21 +27,21 @@ Content-Type | application/json
 
 请求参数说明
 
-参数|类型|备注
--|-|-
-sign|string|签名
-pubkey|string|系统分配的公钥
-item_name|string|(可选)此交易的商品名
-state|string|(可选)此交易的code码，该code码将在回调时通知给商家，用于商家识别订单
+参数 | 类型 | 备注
+- | - | -
+sign | string | 签名
+pubkey | string | 系统分配的公钥
+item_name | string | (可选)此交易的商品名
+state | string | (可选)此交易的code码，该code码将在回调时通知给商家，用于商家识别订单
 
 响应参数说明
 
-参数|类型|备注
--|-|-
-status|integer|系统状态码，=0为操作成功，>0为操作失败，msg有相关错误说明
-msg|string|当status>0时，错误说明信息（该字段在status=0时不返回）
-data|object|交易实体对象
-expired_at|datetime|交易过期时间，过期后订单结束，不再回调通知
+参数 | 类型 | 备注
+- | - | -
+status | integer | 系统状态码，=0为操作成功，>0为操作失败，msg有相关错误说明
+msg | string | 当status>0时，错误说明信息（该字段在status=0时返回交易TXID）
+data | object | 交易实体对象
+expired_at | datetime | 交易过期时间，过期后订单结束，不再回调通知
 
 请求示例
 
