@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Install &mdash; 支付方案API接入文档  documentation</title>
+  <title>基本 &mdash; 支付方案API接入文档  documentation</title>
   
 
   
@@ -80,9 +80,19 @@
             
               <!-- Local TOC -->
               <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Install</a></li>
-<li><a class="reference internal" href="#authentication">Authentication</a></li>
-<li><a class="reference internal" href="#useage">Useage</a></li>
+<li><a class="reference internal" href="#">基本</a><ul>
+<li><a class="reference internal" href="#id2">简介</a></li>
+<li><a class="reference internal" href="#id3">接受付款</a></li>
+<li><a class="reference internal" href="#api">使用API接受付款</a></li>
+<li><a class="reference internal" href="#id4">示例代码</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">付款</a><ul>
+<li><a class="reference internal" href="#id6">创建交易</a></li>
+<li><a class="reference internal" href="#id7">查询交易</a></li>
+<li><a class="reference internal" href="#id8">回调地址</a></li>
+</ul>
+</li>
 </ul>
 </div>
             
@@ -128,7 +138,7 @@
     
       <li><a href="#">Docs</a> &raquo;</li>
         
-      <li>Install</li>
+      <li>基本</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -147,14 +157,83 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="install">
-<h1>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="id1">
+<h1>基本<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="section" id="id2">
+<h2>简介<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li>介绍</li>
+</ol>
+<ol class="simple">
+<li>API设置</li>
+<li>认证方式</li>
+<li>API响应</li>
+</ol>
 </div>
-<div class="section" id="authentication">
-<h1>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id3">
+<h2>接受付款<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="useage">
-<h1>Useage<a class="headerlink" href="#useage" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="api">
+<h2>使用API接受付款<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id4">
+<h2>示例代码<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id5">
+<h1>付款<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="section" id="id6">
+<h2>创建交易<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>系统把创建交易的能力以API的形式开放给商家，使您能用更灵活的方式集成开发支付功能。此API用于创建商家自己的自定义结帐页面，因此买家不必离开商家的网站即可完成付款。</div></blockquote>
+<p>| 接口说明 | |
+| ———- | —————- |
+| 请求路径 | http://{host}/api/v1/submit_trans |
+| 请求方式 | POST |
+| Content-Type | application/json |
+| 字符编码 | UTF-8 |</p>
+<p>请求参数说明</p>
+<p>| 参数 | 类型 | 备注 |
+| ———- | ———— | ———— |
+| sign | string | 签名 |
+| pubkey | string | 系统分配的公钥 |
+| item_name | string | (可选)此交易的商品名 |
+| state | string | (可选)此交易的code码，该code码将在回调时通知给商家，用于商家识别订单 |</p>
+<p>响应参数说明</p>
+<p>| 参数 | 类型 | 备注 |
+| ———- | ———— | ———————- |
+| status | integer | 系统状态码，=0为操作成功，&gt;0为操作失败，msg有相关错误说明 |
+| msg | string | 当status&gt;0时，错误说明信息（该字段在status=0时返回交易TXID）|
+| data | object | 交易实体对象 |
+| expired_at | datetime | 交易过期时间，过期后订单结束，不再回调通知 |</p>
+<p>请求示例</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+	<span class="s2">&quot;sign&quot;</span><span class="p">:</span> <span class="s2">&quot;42306036e6345609e5c4edd6bc830c4bfc9575d306a4d2950d3611e29ee798267953f010cba0f7471842c0f27e83e59018ea01c345f82be07c3e5f148c822dbc&quot;</span><span class="p">,</span>
+	<span class="s2">&quot;pubkey&quot;</span><span class="p">:</span> <span class="s2">&quot;0b6dbe660366b5a8b3ccbfeec373eeec1567b89a96fe0c5ef502091cc8249c42&quot;</span><span class="p">,</span>
+	<span class="s2">&quot;item_name&quot;</span><span class="p">:</span> <span class="s2">&quot;手机&quot;</span><span class="p">,</span>
+	<span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;1001&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>查询交易<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>查询交易能力开放是为了商家更好的控制自己的自定义结帐页面，前端可以采取轮询的方式请求此接口，以获得订单实时状态。也可以通过此接口获取到的过期时间设置定时器，定时关闭订单以达到控制交易的效果。</div></blockquote>
+</div>
+<div class="section" id="id8">
+<h2>回调地址<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li>{host}地址<ul>
+<li>测试环境：</li>
+<li>正式环境：</li>
+</ul>
+</li>
+</ol>
+</div>
 </div>
 
 
