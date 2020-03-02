@@ -4,6 +4,9 @@
 1. 介绍
 2. API设置
 3. 认证方式
+> 每个API调用都有一个使用您的私钥生成的SHA-512 HMAC签名。我们的服务器会生成自己的HMAC签名，并将其与API调用者的签名进行比较。如果它们不匹配，则将放弃API调用。HMAC签名作为称为“sign”的字段发送。
+	- 注意每个字段都应该是string型，如果字段里出现integer情况，也需要转成string型
+	- 如果请求字段里有对象，则需要转成json string，并且转成json string 时输入 JSON_UNESCAPED_UNICODE，JSON_UNESCAPED_SLASHES 两个参数
 4. API响应
 #### 接受付款
 #### 使用API接受付款
@@ -69,7 +72,7 @@
 | ------------ | ------------ | ------------ |
 | sign | string | 签名 |
 | pubkey | string | 系统分配的公钥 |
-| uniqid | uuid | 交易的TXID |
+| uniqid | string(uuid) | 交易的TXID |
 
 响应参数说明
 
