@@ -51,6 +51,11 @@
 }
 ```
 
+First Header | Second Header | Third Header
+------------ | ------------- | ------------
+Content Cell | Content Cell  | Content Cell
+Content Cell | Content Cell  | Content Cell
+
 #### 查询交易
 
 > 查询交易能力开放是为了商家更好的控制自己的自定义结帐页面，前端可以采取轮询的方式请求此接口，以获得订单实时状态。也可以通过此接口获取到的过期时间设置定时器，定时关闭订单以达到控制交易的效果。
