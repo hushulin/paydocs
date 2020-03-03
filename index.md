@@ -17,9 +17,14 @@
 > API将返回包含1个或2个元素的数组：“status”和“msg”。结果将始终有一个“status”字段。如果其值为“0”（integer），则说明该API调用成功，否则将包含“msg”错误消息。如果有数据要返回给您，它将作为数组存储在“data”元素中。
 
 #### 使用API接受付款
-> 123
+> 使用API接受付款，我们采用可变价格收款：给您一个地址，接收到的所有款项都会存入您的钱包，如果您设置了IPN URL，则会将付款通知您的服务器（与此同时，您还需要设置IPN PWD，否则也不会通知您的服务器）。买方可以根据需要发送任意数量的硬币。
 #### 示例代码
-> 123
+```
+curl --request POST \
+--url http://{host}/api/v1/submit_trans \
+--header 'Content-Type: application/json' \
+--data '{"sign": "42306036e6345609e5c4edd6bc830c4bfc9575d306a4d2950d3611e29ee798267953f010cba0f7471842c0f27e83e59018ea01c345f82be07c3e5f148c822dbc","pubkey": "0b6dbe660366b5a8b3ccbfeec373eeec1567b89a96fe0c5ef502091cc8249c42","item_name": "手机","state": "1001"}'
+```
 
 # 付款请求
 
