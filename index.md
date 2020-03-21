@@ -133,4 +133,4 @@ http://{host}/api/v1/query_trans?sign=42306036e6345609e5c4edd6bc830c4bfc9575d306
 
 1. {host}地址
 	- 测试环境：47.56.227.97
-	- 正式环境：47.56.227.97
+	- 正式环境：www.payinchain.com
