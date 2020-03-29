@@ -21,7 +21,7 @@
 #### 示例代码
 ```
 curl --request POST \
---url http://{host}/api/v1/submit_trans \
+--url https://{host}/api/v1/submit_trans \
 --header 'Content-Type: application/json' \
 --data '{"sign": "42306036e6345609e5c4edd6bc830c4bfc9575d306a4d2950d3611e29ee798267953f010cba0f7471842c0f27e83e59018ea01c345f82be07c3e5f148c822dbc","pubkey": "0b6dbe660366b5a8b3ccbfeec373eeec1567b89a96fe0c5ef502091cc8249c42","item_name": "手机","state": "1001"}'
 ```
@@ -34,7 +34,7 @@ curl --request POST \
 
 | 接口说明 | |
 | ------------ | ------------ |
-| 请求路径 | http://{host}/api/v1/submit_trans |
+| 请求路径 | https://{host}/api/v1/submit_trans |
 | 请求方式 | POST |
 | Content-Type | application/json |
 | 字符编码 | UTF-8 |
@@ -74,7 +74,7 @@ curl --request POST \
 
 | 接口说明 | |
 | ------------ | ------------ |
-| 请求路径 | http://{host}/api/v1/query_trans |
+| 请求路径 | https://{host}/api/v1/query_trans |
 | 请求方式 | GET |
 | Content-Type | N/A |
 | 字符编码 | UTF-8 |
@@ -100,7 +100,7 @@ curl --request POST \
 请求示例
 
 ```
-http://{host}/api/v1/query_trans?sign=42306036e6345609e5c4edd6bc830c4bfc9575d306a4d2950d3611e29ee798267953f010cba0f7471842c0f27e83e59018ea01c345f82be07c3e5f148c822dbc&pubkey=0b6dbe660366b5a8b3ccbfeec373eeec1567b89a96fe0c5ef502091cc8249c42&uniqid=3a6765db-5d2c-4907-8e32-36dbb5e31170
+https://{host}/api/v1/query_trans?sign=42306036e6345609e5c4edd6bc830c4bfc9575d306a4d2950d3611e29ee798267953f010cba0f7471842c0f27e83e59018ea01c345f82be07c3e5f148c822dbc&pubkey=0b6dbe660366b5a8b3ccbfeec373eeec1567b89a96fe0c5ef502091cc8249c42&uniqid=3a6765db-5d2c-4907-8e32-36dbb5e31170
 ```
 
 # 回调地址（IPN）
